@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FARMKES Кликер</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #0f0f1a;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .container {
+            max-width: 400px;
+            width: 100%;
+        }
+        
+        h1 {
+            color: #ffd700;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .description {
+            color: #aaa;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+        
+        .coins-display {
+            font-size: 2.5rem;
+            color: #ffd700;
+            margin: 30px 0;
+            font-weight: bold;
+            background: rgba(30, 30, 46, 0.7);
+            padding: 15px;
+            border-radius: 10px;
+        }
+        
+        .bank-card {
+            width: 320px;
+            height: 200px;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            border-radius: 15px;
+            margin: 0 auto 30px;
+            padding: 20px;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .bank-card:active {
+            transform: scale(0.98);
+        }
+        
+        .card-chip {
+            width: 50px;
+            height: 40px;
+            background: linear-gradient(135deg, #d4af37, #ffd700);
+            border-radius: 8px;
+        }
+        
+        .card-number {
+            font-size: 1.3rem;
+            letter-spacing: 2px;
+            margin: 10px 0;
+        }
+        
+        .card-holder {
+            font-size: 1rem;
+            text-align: left;
+        }
+        
+        .card-expiry {
+            font-size: 1rem;
+            text-align: right;
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+        }
+        
+        .click-info {
+            color: #aaa;
+            margin-top: 20px;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>FARMKES</h1>
+        <p class="description">Кликай на карту и зарабатывай монеты!</p>
+        
+        <div class="coins-display" id="coins">0 монет</div>
+        
+        <div class="bank-card" id="bankCard">
+            <div class="card-chip"></div>
+            <div class="card-number">•••• •••• •••• 1234</div>
+            <div class="card-holder">FARMKES HOLDER</div>
+            <div class="card-expiry">12/25</div>
+        </div>
+        
+        <div class="click-info">
+            Нажимай на банковскую карту чтобы получать монеты!
+        </div>
+    </div>
+
+    <script>
+        // Переменная для хранения количества монет
+        let coins = 0;
+        
+        // Получаем элементы страницы
+        const coinsElement = document.getElementById('coins');
+        const bankCard = document.getElementById('bankCard');
+        
+        // Функция при клике на карту
+        function handleCardClick() {
+            // Добавляем 1 монету
+            coins += 1;
+            
+            // Обновляем отображение монет
+            coinsElement.textContent = coins + ' монет';
+            
+            // Анимация нажатия
+
+
+bankCard.style.transform = 'scale(0.98)';
+            setTimeout(() => {
+                bankCard.style.transform = 'scale(1)';
+            }, 100);
+        }
+        
+        // Назначаем обработчик клика на карту
+        bankCard.addEventListener('click', handleCardClick);
+        
+        // Инициализация
+        coinsElement.textContent = coins + ' монет';
+    </script>
+</body>
+</html>
